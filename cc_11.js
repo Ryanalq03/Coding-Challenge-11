@@ -91,7 +91,8 @@ library.listBooks();
 
 //Task 4 Implementing Book Borrowing
 //Creates method for lending book to borrower
-lendBook(borrowerId, isbn) { 
+lendBook(borrowerId, isbn) 
+{ 
     let book = this.books.find(book => book.isbn === isbn); 
     let borrower = this.borrowers.find(borrower => borrower.borrowerId === borrowerId); 
     if (book.copies > 0) { 
@@ -99,6 +100,17 @@ lendBook(borrowerId, isbn) {
         borrower.borrowBook(book.title); 
     }
 }
+
+//Test Cases
+library.lendBook(201, 123456);
+console.log(book1.getDetails());
+// Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 3"
+console.log(borrower1.borrowedBooks);
+// Expected output: ["The Great Gatsby"]
+
+//Task 5 Implemting Book Returns
+
+//Creates method to return books
 //Adds method for returning 
 returnBook(borrowerId, isbn) 
 { 
@@ -109,11 +121,9 @@ returnBook(borrowerId, isbn)
 }
 
 //Test Cases
-library.lendBook(201, 123456);
+library.returnBook(201, 123456);
 console.log(book1.getDetails());
-// Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 3"
+// Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 4"
 console.log(borrower1.borrowedBooks);
-// Expected output: ["The Great Gatsby"]
-
-
+// Expected output: []
 
