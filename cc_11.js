@@ -27,4 +27,40 @@ console.log(book1.getDetails());
 book1.updateCopies(-1); 
 console.log(book1.getDetails());
 
+//Task 2 Borrower
 
+//Creates a borrower class with certain properties
+class Borrower {
+    constructor(name, borrowerID) {
+        this.name = name;
+        this.borrowerID = borrowerID;
+        this.borrowedBooks = [];
+    };
+    //Created method to allow for borrowing books
+    borrowBook(book) { 
+        if (!this.borrowedBooks.includes(book)) { 
+            this.borrowedBooks.push(book); 
+        } else {
+            console.log(`${book} is already borrowed. `);
+        };
+    };
+    //Created method to allow for returning books
+    returnBook(book) { 
+       const index = this.borrowedBooks.indexOf(book); 
+        if (index !== -1) { 
+            this.borrowedBooks.splice(index, 1)  
+        } else {
+            console.log(`${book} is available`) 
+        }
+    }
+}
+
+//Test Cases
+const borrower1 = new Borrower("Alice Johnson", 201);
+borrower1.borrowBook("The Great Gatsby");
+console.log(borrower1.borrowedBooks);
+// Expected output: ["The Great Gatsby"]
+
+borrower1.returnBook("The Great Gatsby");
+console.log(borrower1.borrowedBooks);
+// Expected output: []
