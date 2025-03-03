@@ -20,4 +20,11 @@ class Book {
     };
 }
 
+//Test Cases
+const book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", "123456", 5);
+console.log(book1.getDetails());
+
+book1.updateCopies(-1); 
+console.log(book1.getDetails());
+
 
